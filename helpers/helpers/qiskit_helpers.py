@@ -189,7 +189,7 @@ def run_on_simulator(qc : QuantumCircuit, circuit_number : str):
     verbose, plot = read_circ_args()
 	
     if(plot): 
-        plot_qiskit_dist(c1, circuit_number)
+        plot_qiskit_dist(c1, circuit_number+"_original")
     
     ks_vals = []
 
@@ -199,7 +199,7 @@ def run_on_simulator(qc : QuantumCircuit, circuit_number : str):
         c = preprocess_counts(c)
 
         if(plot):
-            plot_qiskit_dist(c, circuit_number+"_"+str(i))
+            plot_qiskit_dist(c, circuit_number+"_o"+str(i))
 
         ks_vals.append(("o"+str(i), ks_test(c1, c, 1024)))
     

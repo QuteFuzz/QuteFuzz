@@ -9,18 +9,18 @@ QuteFuzz generates circuits for Pytket, Cirq, and Qiskit directly.
 
 **Install python dependencies**
 ```sh
-pip install -r requirements.txt
+python3 -m pip install -r requirements.txt
 ```
 This installs all the helper functions we use for differential testing as well as all other dependencies required to run the circuits such as qiskit, pytket and cirq libraries.
 
 **Generate and run circuits**
 ```sh
-python run.py
+python3 run.py
 ```
 
 This generates and runs a Pytket circuit by default
 
-- To see all available flags, use `python run.py -h`.
+- To see all available flags, use `python3 run.py -h`.
 - You can run the generator on its own by compiling using `make`. Generate n circuits using:
     ```sh
     ./gen -n {n}

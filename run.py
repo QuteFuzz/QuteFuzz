@@ -2,6 +2,7 @@ import subprocess
 import argparse
 import os 
 import sys
+import shutil
 
 QC_DIR = "quantum_circuits"
 PLOTS_DIR = os.path.join(QC_DIR, "plots")
@@ -43,8 +44,16 @@ def main() -> int:
     verbose = "-v" if (args.v) else ""
     plot = "-p" if (args.p) else ""
 
-    if(not os.path.exists(PLOTS_DIR) and args.p):
+    # create plots directory if plotting is enabled
+    if args.p:
+        # Clear the plots directory if it exists
+        if os.path.exists(PLOTS_DIR):
+            shutil.rmtree(PLOTS_DIR)
+        # Create the plots directory
         os.mkdir(PLOTS_DIR)
+    # Clear the plots directory if plotting is disabled
+    elif(os.path.exists(PLOTS_DIR) and not args.p):
+        shutil.rmtree(PLOTS_DIR)
 
     # compile the generate
     subprocess.run("make")
@@ -62,26 +71,26 @@ def main() -> int:
 
     # run circuits
     print("Running cirucits ....")
-    for i, file in enumerate(sorted(os.listdir(QC_DIR))):
+    for i, file in enumerate(sorted(os.listdir(QC_DIR), key = lambda x: int(x.split('.')[0][7:]) if "py" in x else 0)):
         path = os.path.join(QC_DIR, file)
         
         if (not os.path.isdir(path) and (file.split(".")[1] == "py")):
             
             log_path = os.path.join(QC_DIR, "_results.txt")
 
-            progress_bar(i+1, int(args.n))
+            progress_bar(i, int(args.n))
 
             with open(log_path, "a") as f:
                 
                 try:
                     subprocess.run(
-                        ["python", "-Wi", path, verbose, plot],
+                        ["python3", "-Wi", path, verbose, plot],
                         stdout=f,
                         stderr=subprocess.STDOUT,
                         check=True
                     )
                 except Exception as e:
-                    print(f"\nERROR '{e}' occured while running circuits, check", log_path, "for details")
+                    print(f"\nERROR '{e}' occurred while running circuits, check", log_path, "for details")
 
     print("\nResults in ", log_path)
     return 0

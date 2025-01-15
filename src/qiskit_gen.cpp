@@ -5,7 +5,7 @@ std::vector<std::string> qiskit::all_passes = {"Optimize1qGates", "Optimize1qGat
     "CollectMultiQBlocks","CollectLinearFunctions","CollectCliffords","ConsolidateBlocks","CXCancellation","InverseCancellation",
     "CommutationAnalysis","CommutativeCancellation","CommutativeInverseCancellation","Optimize1qGatesSimpleCommutation","RemoveDiagonalGatesBeforeMeasure",
     "RemoveResetInZeroState","RemoveFinalReset","HoareOptimizer","TemplateOptimization","ResetAfterMeasureSimplification",
-    "OptimizeCliffords","ElidePermutations","NormalizeRXAngle","OptimizeAnnotated", "AllOpt"
+    "OptimizeCliffords","ElidePermutations","NormalizeRXAngle","OptimizeAnnotated"
 };
 
 void qiskit::write_imports(std::ofstream& stream){
@@ -327,7 +327,7 @@ void qiskit::generate_circuits(int n){
 			}
 			else {
 				stream << global_info.name << ".measure_active()" << std::endl;
-				stream << "run_routing_simulation(main_circ, " << i+1 << ")" << std::endl;
+				stream << "run_routing_simulation(main_circ, \"" << i+1 << "\")" << std::endl;
 			}
 		}
 

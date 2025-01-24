@@ -78,7 +78,7 @@ def main() -> int:
             
             log_path = os.path.join(QC_DIR, "_results.txt")
 
-            progress_bar(i, int(args.n))
+            progress_bar(i+1, int(args.n))
 
             with open(log_path, "a") as f:
                 

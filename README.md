@@ -68,7 +68,7 @@ All quantum circuits, logs and results will be shown in a `quantum_circuits` fol
 
 ## Paper
 
-In *Programming Languages for Quantum Computing 2025* [[pdf](QuteFuzz.pdf)]
+In *Programming Languages for Quantum Computing 2025* [[pdf](paper/QuteFuzz.pdf)]
 
 ## A note on constants chosen
 

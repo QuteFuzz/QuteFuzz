@@ -66,6 +66,10 @@ All quantum circuits, logs and results will be shown in a `quantum_circuits` fol
 | Ilan  | [:octocat:](https://github.com/IlanIwumbwe) | ii122@imperial.ac.uk |
 | Dr. John Wickerson  | [:octocat:](https://github.com/johnwickerson) | j.wickerson@imperial.ac.uk |
 
+## Paper
+
+In *Programming Languages for Quantum Computing 2025* [[pdf](QuteFuzz.pdf)]
+
 ## A note on constants chosen
 
 See [`headers/utils.h`](headers/utils.h)
